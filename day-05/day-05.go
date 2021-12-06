@@ -113,19 +113,3 @@ func (segment LineSegment2D) isVertical() bool {
 func (segment LineSegment2D) isHorizontal() bool {
 	return segment.a.y == segment.b.y
 }
-
-func (segment LineSegment2D) intersects(c Point2D) bool {
-	var crossProduct = (c.y-segment.a.y)*(segment.b.x-segment.a.x) - (c.x-segment.a.x)*(segment.b.y-segment.a.y)
-	if crossProduct != 0 {
-		return false
-	}
-	var dotProduct = (c.x-segment.a.x)*(segment.b.x-segment.a.x) + (c.y-segment.a.y)*(segment.b.y-segment.a.y)
-	if dotProduct < 0 {
-		return false
-	}
-	var squaredLength = (segment.b.x-segment.a.x)*(segment.b.x-segment.a.x) + (segment.b.y-segment.a.y)*(segment.b.y-segment.a.y)
-	if dotProduct > squaredLength {
-		return false
-	}
-	return true
-}
