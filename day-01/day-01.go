@@ -2,8 +2,8 @@ package main
 
 import (
 	"adventofcode2021/input"
+	"adventofcode2021/util"
 	"fmt"
-	"strconv"
 )
 
 func main() {
@@ -13,11 +13,11 @@ func main() {
 }
 
 func calculatePart2(lines []string) int {
-	return countIncreases(toWindows(toDepths(lines)))
+	return countIncreases(toWindows(util.StringsToInts(lines)))
 }
 
 func calculatePart1(lines []string) int {
-	return countIncreases(toDepths(lines))
+	return countIncreases(util.StringsToInts(lines))
 }
 
 func countIncreases(values []int) int {
@@ -36,19 +36,9 @@ func countIncreases(values []int) int {
 
 func toWindows(depths []int) []int {
 	var windows []int
-	for ndx, depth := range depths {
-		if ndx >= 2 {
-			windows = append(windows, depth+depths[ndx-1]+depths[ndx-2])
-		}
+	for ndx := 2; ndx < len(depths); ndx++ {
+
+		windows = append(windows, depths[ndx]+depths[ndx-1]+depths[ndx-2])
 	}
 	return windows
-}
-
-func toDepths(lines []string) []int {
-	var depths []int
-	for _, line := range lines {
-		i, _ := strconv.Atoi(line)
-		depths = append(depths, i)
-	}
-	return depths
 }

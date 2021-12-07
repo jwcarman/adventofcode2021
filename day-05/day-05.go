@@ -23,13 +23,7 @@ func calculatePart1(segments *[]LineSegment2D) int {
 			}
 		}
 	}
-	var count = 0
-	for _, n := range pointCounts {
-		if n > 1 {
-			count++
-		}
-	}
-	return count
+	return totalPointCounts(pointCounts)
 }
 
 func calculatePart2(segments *[]LineSegment2D) int {
@@ -39,6 +33,10 @@ func calculatePart2(segments *[]LineSegment2D) int {
 			pointCounts[point]++
 		}
 	}
+	return totalPointCounts(pointCounts)
+}
+
+func totalPointCounts(pointCounts map[Point2D]int) int {
 	var count = 0
 	for _, n := range pointCounts {
 		if n > 1 {

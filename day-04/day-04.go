@@ -12,7 +12,7 @@ const boardSize = 5
 func main() {
 	lines, _ := input.ReadLines("./input.txt")
 
-	numbers := readNumbers(&lines)
+	numbers := util.StringsToInts(strings.Split(lines[0], ","))
 	boards := readBoards(&lines)
 
 	fmt.Println(calculatePart1(numbers, boards))
@@ -58,6 +58,11 @@ func readBoards(lines *[]string) []BingoBoard {
 	return boards
 }
 
+type BingoBoardSpace struct {
+	number int
+	marked bool
+}
+
 type BingoBoard struct {
 	spaces []BingoBoardSpace
 	score  int
@@ -73,6 +78,7 @@ func (board *BingoBoard) mark(number int) bool {
 			}
 		}
 	}
+
 	return false
 }
 
@@ -106,14 +112,4 @@ func (board *BingoBoard) checkRowForWin(row int) bool {
 		}
 	}
 	return true
-}
-
-type BingoBoardSpace struct {
-	number int
-	marked bool
-}
-
-func readNumbers(lines *[]string) []int {
-	splits := strings.Split((*lines)[0], ",")
-	return util.StringsToInts(splits)
 }
