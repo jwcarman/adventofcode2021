@@ -1,7 +1,7 @@
 package main
 
 import (
-	"adventofcode2021/input"
+	"aoc2021/input"
 	"fmt"
 	"math"
 	"reflect"

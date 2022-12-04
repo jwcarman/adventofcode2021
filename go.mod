@@ -1,3 +1,3 @@
-module adventofcode2021
+module aoc2021
 
-go 1.17
+go 1.19

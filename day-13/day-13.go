@@ -1,8 +1,8 @@
 package main
 
 import (
-	"adventofcode2021/input"
-	"adventofcode2021/util"
+	"aoc2021/input"
+	"aoc2021/util"
 	"fmt"
 	"sort"
 	"strconv"
